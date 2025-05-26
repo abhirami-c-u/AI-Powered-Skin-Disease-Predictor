@@ -5,30 +5,30 @@ from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import numpy as np
 
 app = Flask(__name__)
-model = load_model('final_skin_model.keras')
+model = load_model('last_skin_model.keras')
 
-classes = ['akiec', 'bcc', 'bkl', 'mel','df']  # Update if needed
+classes = ['nv', 'bkl', 'bcc', 'mel']
+  
 
 UPLOAD_FOLDER = 'static/uploaded'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Disease descriptions (fill or expand as needed)
 disease_descriptions = {
-    'AKIEC': 'Actinic keratoses are rough, scaly patches on the skin caused by years of sun exposure.',
-    'BCC': 'Basal cell carcinoma is a type of skin cancer that begins in the basal cells.',
+
+    'NV': 'Melanocytic nevi (NV) are common benign skin moles.',
     'BKL': 'Benign keratosis-like lesions are non-cancerous skin growths.',
     'MEL': 'Melanoma is a serious form of skin cancer that can spread to other parts of the body.',
-    'DF': 'Dermatofibroma is a benign skin growth often appearing as a firm bump.'
-
+    'BCC': 'Basal cell carcinoma is a type of skin cancer that begins in the basal cells.'
 }
 
 # Actions to be taken for each disease (fill or expand as needed)
 disease_actions = {
-    'AKIEC': 'Consult a dermatologist for diagnosis and treatment options.',
-    'BCC': 'See a healthcare professional for biopsy and treatment.',
+    
+    'NV': 'Generally harmless, but monitor for any changes and consult a dermatologist if needed.',
     'BKL': 'Usually harmless but monitor any changes and consult if needed.',
     'MEL': 'Seek immediate medical attention for biopsy and treatment.',
-    'DF': 'Generally harmless, but consult a dermatologist if changes in size or color are observed.'
+    'BCC': 'See a healthcare professional for biopsy and treatment.'
 }
 
 def get_risk_assessment(disease, confidence):

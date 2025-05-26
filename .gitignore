@@ -6,17 +6,19 @@ __pycache__/
 *.h5
 *.keras
 
-# Data
+# Image/Data files
 *.csv
 *.jpg
+*.jpeg
 *.png
 *.webp
-*.jpeg
+*.bmp
 
+# Folder containing images (like HAM10000 or uploads)
 skin_disease_data/
+uploaded/
 
-
-# OS and IDE
-.DS_Store
+# IDE and OS files
 .vscode/
 .idea/
+.DS_Store
